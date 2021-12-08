@@ -11,8 +11,8 @@ class App extends Component{
             <TitreH1>Créateur de personnage</TitreH1>
             <div>Personnage</div>
             <div>Armes</div>
-            <Bouton type="btn-danger">Réinitialiser</Bouton>
-            <Bouton type="btn-success">Créer</Bouton>
+            <Bouton type="btn-danger" click={() => console.log("réinitialiser...")}>Réinitialiser</Bouton>
+            <Bouton type="btn-success" click={() => console.log("créer...")}>Créer</Bouton>
         </div>
       </Fragment>
     );
