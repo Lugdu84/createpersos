@@ -13,9 +13,9 @@ const ImagePerso = (props) => {
 
   return (
     <div className={classes.box}>
-      <div className={classes.down}/>
+      <div className={classes.down} onClick={ props.previous}/>
       <Image src={imageToPrint} alt="perso" />
-      <div className={classes.up} />
+      <div className={classes.up} onClick={props.next} />
     </div>
   );
 };
