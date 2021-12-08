@@ -9,7 +9,7 @@ class CreateurPersonnage extends Component{
     personnage: {
       nbPointsDisponibles: 7,
       image: 1,
-      force: 0,
+      force: 2,
       agilité: 0,
       intelligence: 0
     }
