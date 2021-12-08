@@ -8,7 +8,7 @@ const Personnage = (props) => (
       <ImagePerso numImage={props.image} previous={props.previous} next={props.next}/>
     </div>
     <div className="col-6">
-      <CaracPerso points={props.points} force={props.force} agilité={props.agilité} intelligence={props.intelligence}/>
+      <CaracPerso nbPointsDisponibles={props.nbPointsDisponibles} force={props.force} agilité={props.agilité} intelligence={props.intelligence}/>
     </div>
   </div>
 );
