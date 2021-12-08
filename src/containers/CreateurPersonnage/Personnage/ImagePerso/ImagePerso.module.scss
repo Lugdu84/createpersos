@@ -1,0 +1,23 @@
+@mixin  arrow {
+  background-color: orange;
+  cursor: pointer;
+  width: 20px;
+  height: 32px;
+}
+
+.box {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+}
+
+.up {
+  @include arrow;
+  clip-path: polygon(0 0, 0 100%, 100% 50%);
+}
+
+.down {
+  @include arrow;
+  clip-path: polygon(100% 0, 100% 100%, 0 50%);
+}

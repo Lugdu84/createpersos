@@ -3,6 +3,7 @@ import ImagePlayer1 from "../../../../assets/persos/player1.png"
 import ImagePlayer2 from "../../../../assets/persos/player2.png"
 import ImagePlayer3 from "../../../../assets/persos/player3.png"
 import Image from "react-bootstrap/Image";
+import classes from "./ImagePerso.module.scss";
 
 const ImagePerso = (props) => {
   let imageToPrint = "";
@@ -11,7 +12,11 @@ const ImagePerso = (props) => {
   else if (props.numImage === 3) imageToPrint = ImagePlayer3;
 
   return (
-    <Image src={imageToPrint} alt="perso" />
+    <div className={classes.box}>
+      <div className={classes.down}/>
+      <Image src={imageToPrint} alt="perso" />
+      <div className={classes.up} />
+    </div>
   );
 };
 
