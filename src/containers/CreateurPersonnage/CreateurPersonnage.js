@@ -7,6 +7,7 @@ class CreateurPersonnage extends Component{
 
   state = {
     personnage: {
+      points: 7,
       image: 1,
       force: 0,
       agilité: 0,
