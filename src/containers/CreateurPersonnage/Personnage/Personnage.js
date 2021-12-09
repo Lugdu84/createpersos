@@ -10,8 +10,8 @@ const Personnage = (props) => (
     <div className="col-6">
       <CaracPerso
         nbPointsDisponibles={props.nbPointsDisponibles}
-        force={props.force}
-        agilité={props.agilité}
+        strength={props.strength}
+        agility={props.agility}
         intelligence={props.intelligence}
         augment={props.augment}
         decrease={props.decrease}

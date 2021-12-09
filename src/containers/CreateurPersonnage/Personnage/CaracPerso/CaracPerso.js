@@ -6,14 +6,14 @@ const CaracPerso = (props) => {
     <>
       <div>Points restants : <span className="badge bg-success">{props.nbPointsDisponibles}</span></div>
       <Carac
-        nbPoints={props.force}
-        decrease={() => props.decrease('force')}
-        augment={() => props.augment('force')}
+        nbPoints={props.strength}
+        decrease={() => props.decrease('strength')}
+        augment={() => props.augment('strength')}
       >Force</Carac>
       <Carac
-        nbPoints={props.agilité}
-        decrease={() => props.decrease('agilité')}
-        augment={() => props.augment('agilité')}
+        nbPoints={props.agility}
+        decrease={() => props.decrease('agility')}
+        augment={() => props.augment('agility')}
       >Agilité</Carac>
       <Carac
         nbPoints={props.intelligence}

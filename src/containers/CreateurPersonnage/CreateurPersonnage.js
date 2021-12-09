@@ -10,9 +10,10 @@ class CreateurPersonnage extends Component{
     personnage: {
       nbPointsDisponibles: 7,
       image: 1,
-      force: 0,
-      agilité: 0,
-      intelligence: 0
+      strength: 0,
+      agility: 0,
+      intelligence: 0,
+      weapon: null
     },
     weapons: ["sword", "scourge", "bow", "axe"],
   }
@@ -69,6 +70,31 @@ class CreateurPersonnage extends Component{
     })
   }
 
+  selectWeaponHandler = (weapon) => {
+    this.setState(oldState => {
+      const newPersonnage = {...oldState.personnage};
+      newPersonnage.weapon = weapon;
+      return {personnage: newPersonnage};
+    })
+  }
+
+  resetPersonnageHandler = () => {
+    this.setState({
+      personnage: {
+        nbPointsDisponibles: 7,
+        image: 1,
+        strength: 0,
+        agility: 0,
+        intelligence: 0,
+        weapon: null
+      },
+    })
+  }
+
+  creatPersonnageHandler = () => {
+    console.log("création du personnage ...");
+  }
+
   render(){
     return (
         <div className="container">
@@ -80,9 +106,14 @@ class CreateurPersonnage extends Component{
             decrease={this.decreaseCaracHandler}
             augment={this.augmentCaracHandler}
           />
-          <Weapons listWeapons = {this.state.weapons} />
-          <Bouton type="btn-danger" click={() => console.log("réinitialiser...")}>Réinitialiser</Bouton>
-          <Bouton type="btn-success" click={() => console.log("créer...")}>Créer</Bouton>
+          <Weapons
+            listWeapons = {this.state.weapons}
+            selectWeapon = {this.selectWeaponHandler}
+          />
+          <Bouton
+            type="btn-danger"
+            click={this.resetPersonnageHandler}>Réinitialiser</Bouton>
+          <Bouton type="btn-success" click={this.creatPersonnageHandler}>Créer</Bouton>
         </div>
     );
   }

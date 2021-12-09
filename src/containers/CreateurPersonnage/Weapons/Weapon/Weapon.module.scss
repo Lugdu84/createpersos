@@ -1,5 +1,12 @@
 .align {
   text-align: center;
   font-size: 22px;
-  margin: 12px;
+}
+
+.imgWeapon {
+  cursor: pointer;
+  opacity: 0.5;
+  &:hover {
+    opacity: 1;
+  }
 }

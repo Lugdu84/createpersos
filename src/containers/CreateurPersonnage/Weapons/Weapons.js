@@ -21,7 +21,11 @@ const Weapons = (props) => (
           break;
           default : imgWeapon = axe;
         }
-        return <Weapon key={weapon} weapon={weapon} image={imgWeapon}/>
+        return <Weapon
+          key={weapon}
+          weapon={weapon}
+          image={imgWeapon}
+          selectWeapon={() => props.selectWeapon(weapon)}/>
       })}
     </div>
 );
