@@ -11,6 +11,7 @@ class CreateurPersonnage extends Component{
   state = {
     personnage: {
       nbPointsDisponibles: 7,
+      name: "",
       image: 1,
       strength: 0,
       agility: 0,
@@ -19,7 +20,6 @@ class CreateurPersonnage extends Component{
     },
     weapons: null,
     loading: false,
-    name: ""
   }
 
   componentDidMount = () => {
@@ -102,30 +102,25 @@ class CreateurPersonnage extends Component{
     this.setState({
       personnage: {
         nbPointsDisponibles: 7,
+        name: "",
         image: 1,
         strength: 0,
         agility: 0,
         intelligence: 0,
-        weapon: null
+        weapon: null,
       },
-      name: ""
-    })
+    });
   }
 
-  creatPersonnageHandler = () => {
+  createPersonnageHandler = () => {
     this.setState({loading: true});
-    const player = {
-      perso : {...this.state.personnage},
-      name: this.state.name
-    }
+    const player = {...this.state.personnage};
     axios.post("https://mysalaat-fc913.firebaseio.com/persos.json", player)
       .then(response => {
-        console.log(response);
         this.setState({loading: false});
         this.resetPersonnageHandler();
       })
       .catch(error => {
-        console.log(error);
         this.setState({loading: false});
         this.resetPersonnageHandler();
       })
@@ -140,8 +135,14 @@ class CreateurPersonnage extends Component{
             <Form.Control
               type="text"
               placeholder="Entrez votre pseudo"
-              value={this.state.name}
-              onChange={event => this.setState({name: event.target.value})}
+              value={this.state.personnage["name"]}
+              onChange={event => this.setState(oldState =>
+                {
+                  const newPersonnage = {...oldState.personnage};
+                  newPersonnage["name"] = event.target.value;
+                  return {personnage: newPersonnage};
+                }
+              )}
             />
           </Form.Group>
           <Personnage
@@ -169,10 +170,10 @@ class CreateurPersonnage extends Component{
             click={this.resetPersonnageHandler}>Réinitialiser</Bouton>
           <Bouton
             type="btn-success"
-            click={this.creatPersonnageHandler}>Créer</Bouton>
+            click={this.createPersonnageHandler}>Créer</Bouton>
         </div>
     );
-  }
+ }
 }
 
 export default CreateurPersonnage;
