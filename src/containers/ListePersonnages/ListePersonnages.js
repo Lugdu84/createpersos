@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
+import Personnage from  "./Personnage/Personnage";
 
 class ListePersonnages extends Component{
   state = {
@@ -7,22 +8,32 @@ class ListePersonnages extends Component{
     loading : false
   }
 
-
-  componentDidMount = () =>  {
-    this.setState({loading: true});
-    axios.get("https://mysalaat-fc913.firebaseio.com/persos.json")
-      .then(response => {
-        console.log(response.data);
+  loadData = () => {
+    this.setState({ loading: true });
+    axios
+      .get("https://mysalaat-fc913.firebaseio.com/persos.json")
+      .then((response) => {
         const personnages = Object.values(response.data);
         this.setState({
           personnages,
-          loading: false
+          loading: false,
         });
       })
-      .catch(error => {
+      .catch((error) => {
         console.log(error);
-        this.setState({loading: false})
-      })
+        this.setState({ loading: false });
+      });
+  }
+
+
+  componentDidMount = () =>  {
+    this.loadData();
+  }
+
+  componentDidUpdate = (prevProps) => {
+    if (prevProps.refresh !== this.props.refresh){
+      this.loadData();
+    }
   }
 
 
@@ -30,19 +41,20 @@ class ListePersonnages extends Component{
   render(){
     return (
       <>
-        {
-          this.state.loading && <div>Chargement en cours ...</div>
-        }
-        {
-          !this.state.loading && this.state.personnages &&
+        {this.state.loading && <div>Chargement en cours ...</div>}
+        {!this.state.loading && this.state.personnages && (
           <div className="container">
             <div className="row no-gutters">
               {this.state.personnages.map((perso, indice) => {
-                return <div className="col-6" key={indice}>{perso["name"]}</div>
+                return (
+                  <div className="col-6" key={indice}>
+                    <Personnage {...perso} />
+                  </div>
+                );
               })}
             </div>
           </div>
-        }
+        )}
       </>
     );
   }

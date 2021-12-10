@@ -119,6 +119,7 @@ class CreateurPersonnage extends Component{
       .then(response => {
         this.setState({loading: false});
         this.resetPersonnageHandler();
+        this.props.refresh();
       })
       .catch(error => {
         this.setState({loading: false});
