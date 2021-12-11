@@ -47,7 +47,7 @@ class ListePersonnages extends Component{
             <div className="row no-gutters">
               {this.state.personnages.map((perso, indice) => {
                 return (
-                  <div className="col-6" key={indice}>
+                  <div className="col-12 col-md-6" key={indice}>
                     <Personnage {...perso} />
                   </div>
                 );
